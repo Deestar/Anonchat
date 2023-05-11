@@ -23,7 +23,12 @@ export const Choicecard = ({ next }) => {
           <h3>Join a Room</h3>
           <h5>Click here to join a room with your room id</h5>
         </div>
-        <img src={Next} />
+        <img
+          src={Next}
+          onClick={() => {
+            next("room");
+          }}
+        />
       </div>
     </section>
   );

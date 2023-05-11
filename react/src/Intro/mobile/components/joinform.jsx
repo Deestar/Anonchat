@@ -1,6 +1,6 @@
 import Back from "../../../assets/img/back.png";
 //Added inline styling to get a quick fit to one input
-export const Joinform = () => {
+export const Joinform = ({ prev }) => {
   const style = {
     fontSize: "clamp(16px, 5.7vw, 20px)",
     color: "rgb(209, 209, 209)",
@@ -12,6 +12,9 @@ export const Joinform = () => {
     <form action="" style={{ height: "clamp(250px,90%,370px)" }}>
       <img
         src={Back}
+        onClick={() => {
+          prev("choice");
+        }}
         style={{ height: "clamp(30px,10%,40px)", top: "clamp(6px,2%,25px)" }}
       />
       <h1 style={{ fontSize: "clamp(20px, 6.5vw, 32px)", marginLeft: "2%" }}>

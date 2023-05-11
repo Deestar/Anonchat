@@ -9,9 +9,9 @@ import { Joinform } from "./components/joinform";
 export const MobileIndex = () => {
   //State to detemine what component to render next
   const [progress, setProgress] = useState({
-    choice: false,
+    choice: true,
     create: false,
-    room: true,
+    room: false,
     share: false,
   });
   //function to return right template column for main element
@@ -52,7 +52,7 @@ export const MobileIndex = () => {
       <Createform next={""} prev={getProgress} />
       :
       progress.room?<>
-      <Joinform next={getProgress}/>
+      <Joinform prev={getProgress}/>
       <img style={{height:"100%"}} src={Group} />
       </>
       :
