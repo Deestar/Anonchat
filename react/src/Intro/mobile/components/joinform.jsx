@@ -8,6 +8,20 @@ export const Joinform = ({ prev }) => {
     marginBottom: "2%",
     fontFamily: "cursive",
   };
+  //change height to absolute value on focus of input
+  const blurout = () => {
+    let h = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+    let r = document.querySelector(":root");
+    r.style.setProperty("--height", h + "px");
+  };
+  //change height to responsive value on blur of input
+  const stoptouch = () => {
+    let r = document.querySelector(":root");
+    r.style.setProperty("--height", "-webkit-fill-available");
+  };
   return (
     <form action="" style={{ height: "clamp(250px,90%,370px)" }}>
       <img
@@ -32,6 +46,8 @@ export const Joinform = ({ prev }) => {
             Room ID
           </h3>
           <input
+            onFocus={blurout}
+            onBlur={stoptouch}
             type="text"
             name="banned"
             placeholder="Roomid"

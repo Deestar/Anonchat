@@ -1,5 +1,19 @@
 import Back from "../../../assets/img/back.png";
 export const Createform = ({ prev }) => {
+  //change height to absolute value on focus of input
+  const blurout = () => {
+    let h = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+    let r = document.querySelector(":root");
+    r.style.setProperty("--height", h + "px");
+  };
+  //change height to responsive value on blur of input
+  const stoptouch = () => {
+    let r = document.querySelector(":root");
+    r.style.setProperty("--height", "-webkit-fill-available");
+  };
   return (
     <form action="">
       <img
@@ -12,12 +26,24 @@ export const Createform = ({ prev }) => {
       <section>
         <label>
           <h3>Room Name</h3>
-          <input name="name" type="text" maxLength={25} />
+          <input
+            onFocus={blurout}
+            onBlur={stoptouch}
+            name="name"
+            type="text"
+            maxLength={25}
+          />
           {/* <h6>An error message for input values</h6> */}
         </label>
         <label>
           <h3> Banned Words</h3>
-          <input type="text" name="banned" placeholder="bitch, hoe, racist" />
+          <input
+            onFocus={blurout}
+            onBlur={stoptouch}
+            type="text"
+            name="banned"
+            placeholder="bitch, hoe, racist"
+          />
           {/* <h6>An error message for input values</h6> */}
         </label>
         <label>
