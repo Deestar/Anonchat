@@ -14,6 +14,8 @@ export const Createform = ({ prev }) => {
     let r = document.querySelector(":root");
     r.style.setProperty("--height", "-webkit-fill-available");
   };
+  //button function onclick to create room
+
   return (
     <form action="">
       <img
