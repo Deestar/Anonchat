@@ -15,7 +15,7 @@ export const Fetcher = (url = "", method, params = {}, token) => {
         error: true,
       };
     } else {
-      return { ...response, error: false };
+      return response;
     }
   };
   return getfetch();
