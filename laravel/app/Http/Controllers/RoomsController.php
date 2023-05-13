@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\File;
 
 class RoomsController extends Controller
 {
@@ -14,9 +13,9 @@ class RoomsController extends Controller
     {
         $request->validate(
             [
-                "name" => "required||min:3||string",
-                "banned" => "min:3||string",
-                "logo" => [File::types(["jpg", "png", "jpeg"])->max("500kb")],
+                "name" => "bail|required|min:3|string",
+                "banned" => "bail|nullable|min:3|string",
+                "logo" => 'bail|max:500|file|nullable',
             ]
         );
         return response()->json($request);

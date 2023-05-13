@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
  */
-Route::get("/", [RoomsController::class, "index"]);
+Route::post("/", [RoomsController::class, "index"]);
