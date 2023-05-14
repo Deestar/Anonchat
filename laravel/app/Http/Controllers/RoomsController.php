@@ -45,9 +45,24 @@ class RoomsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, Rooms $rooms)
     {
-        //
+        $request->validate(
+            [
+                'room_id' => 'min:5|required|string',
+            ]
+        );
+        $id = base64_decode($request->id);
+        $room = $rooms->all()->where("room_id", $id);
+        if ($room->count() < 1) {
+            return response()->json([
+                "error" => true,
+                "message" => "room does not exist",
+            ]);
+        } else {
+            return response()->json($room);
+        }
+
     }
 
     /**

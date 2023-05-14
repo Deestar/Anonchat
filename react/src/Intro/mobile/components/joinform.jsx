@@ -1,6 +1,10 @@
+import { useState } from "react";
 import Back from "../../../assets/img/back.png";
+import { Fetcher } from "./fetcher";
 //Added inline styling to get a quick fit to one input
 export const Joinform = ({ prev }) => {
+  //State to get id
+  const [id, setId] = useState("");
   const style = {
     fontSize: "clamp(16px, 5.7vw, 20px)",
     color: "rgb(209, 209, 209)",
@@ -22,8 +26,22 @@ export const Joinform = ({ prev }) => {
     let r = document.querySelector(":root");
     r.style.setProperty("--height", "-webkit-fill-available");
   };
+  //function to join a room
+  const joinroom = (event) => {
+    event.preventDefault();
+    const form = new FormData();
+    form.append("room_id", id);
+    const send = Fetcher("http://127.0.0.1:8000/api/room", "post", form);
+    send.then((response) => {
+      console.log(response);
+    });
+  };
   return (
-    <form action="" style={{ height: "clamp(250px,90%,370px)" }}>
+    <form
+      onSubmit={joinroom}
+      action=""
+      style={{ height: "clamp(250px,90%,370px)" }}
+    >
       <img
         src={Back}
         onClick={() => {
@@ -48,6 +66,7 @@ export const Joinform = ({ prev }) => {
           <input
             onFocus={blurout}
             onBlur={stoptouch}
+            onInput={(event) => setId(event.target.value)}
             type="text"
             name="banned"
             placeholder="Roomid"
