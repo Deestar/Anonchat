@@ -33,7 +33,7 @@ main.mobileindex_main header {
   column-gap: 2%;
 }
 main.mobileindex_main header h1 {
-  color: rgb(219, 231, 223);
+  color: white;
   font-family: "Lobster", cursive;
   letter-spacing: 5px;
   font-size: clamp(25px, 8.5vw, 32px);
@@ -203,4 +203,106 @@ main.mobileindex_main form button {
     height: clamp(33px, 5%, 50px);
     width: 11%;
   }
+}
+main.mobileindex_main section.share {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(30, 39, 32);
+  row-gap: 5%;
+  margin: 3%;
+  border-radius: 10px;
+  padding: 5%;
+}
+main.mobileindex_main section.share header {
+  /* border: var(--border1); */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+main.mobileindex_main section.share header i {
+  font-size: clamp(28px, 8.3vw, 37px);
+}
+main.mobileindex_main section.share header h1 {
+  width: 100%;
+  text-align: center;
+  color: #256e3e;
+  font-size: clamp(21px, 6.5vw, 23px);
+  letter-spacing: 1px;
+}
+main.mobileindex_main section.share > h3 {
+  color: rgb(214, 233, 217);
+  font-family: helvetica;
+  font-size: clamp(15px, 5.1vw, 20px);
+  word-spacing: -2px;
+  /* border: var(--border1); */
+}
+main.mobileindex_main section.share div.buttons {
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2%;
+}
+main.mobileindex_main section.share div.buttons button {
+  width: 46%;
+  height: 100%;
+  background-color: #202923;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10%;
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0.205);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+main.mobileindex_main section.share div.buttons button i {
+  font-size: clamp(32px, 8vw, 50px);
+  /* background-color: rgb(203, 236, 213); */
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  padding: 4%;
+}
+main.mobileindex_main section.share div.buttons button h4 {
+  color: rgb(185, 216, 193);
+  font-size: clamp(16px, 5vw, 20px);
+  font-family: helvetica;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+main.mobileindex_main section.share div.link {
+  display: flex;
+  flex-direction: column;
+  height: clamp(35px, 29%, 110px);
+  row-gap: 10%;
+  justify-content: center;
+}
+main.mobileindex_main section.share div.link h3 {
+  color: rgb(190, 186, 186);
+  font-family: helvetica;
+  font-weight: 200;
+  font-size: clamp(15px, 5vw, 20px);
+}
+main.mobileindex_main section.share div.link button {
+  background-color: rgb(101, 109, 105);
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  height: 50%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3%;
+  outline: none;
+  color: rgb(224, 224, 224);
+}
+main.mobileindex_main section.share div.link button i {
+  font-size: clamp(16px, 5.9vw, 25px);
+}
+main.mobileindex_main section.share div.link button h5 {
+  font-family: helvetica;
+  letter-spacing: 2px;
+  font-size: clamp(16px, 5.5vw, 25px);
 }

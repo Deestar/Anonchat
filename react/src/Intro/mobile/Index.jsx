@@ -6,17 +6,30 @@ import { Choicecard } from "./components/Choicecard";
 import { Createform } from "./components/createform";
 import Group from "../../assets/img/group.png";
 import { Joinform } from "./components/joinform";
+import { Share } from "./components/Share";
 export const MobileIndex = () => {
   //State to detemine what component to render next
   const [progress, setProgress] = useState({
-    choice: true,
+    choice: false,
     create: false,
     room: false,
-    share: false,
+    share: true,
   });
+  //State to get the roomid and name for share component after user creates room
+  const [roominfo, setRoomInfo] = useState({ name: "", id: "" });
+  //function to set room id and switch to share page
+  const setShare = useCallback((id, name) => {
+    setRoomInfo({ name: name, roomid: id });
+    setProgress(() => ({
+      choice: false,
+      create: false,
+      room: false,
+      share: true,
+    }));
+  }, []);
   //function to return right template column for main element
   const columndiv = () => {
-    if (progress.choice || progress.room) {
+    if (progress.choice || progress.room || progress.share) {
       return {
         gridTemplateRows: "10% 16% 50% 15%",
       };
@@ -49,14 +62,14 @@ export const MobileIndex = () => {
       </>
       :
       progress.create?
-      <Createform next={""} prev={getProgress} />
+      <Createform next={setShare} prev={getProgress} />
       :
       progress.room?<>
       <Joinform prev={getProgress}/>
       <img style={{height:"100%"}} src={Group} />
       </>
       :
-      progress.share?<div>share</div>
+      progress.share?<><Share roomid={roominfo.id} roomname={roominfo.name}/> <img style={{height:"100%"}} src={Group} /></>
       :
       <>
       <Choicecard next={getProgress}/>

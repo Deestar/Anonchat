@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Fetcher } from "./fetcher";
 import Back from "../../../assets/img/back.png";
-export const Createform = ({ prev }) => {
+export const Createform = ({ prev, next }) => {
   //inputs state
   const [newroom, setNewRoom] = useState({
     name: "",
@@ -54,7 +54,7 @@ export const Createform = ({ prev }) => {
         setError(response);
       } else {
         setError({ name: null, banned: null, logo: null });
-        console.log(response);
+        next(response.room_id, response.name);
       }
     });
   };
