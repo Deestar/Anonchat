@@ -69,7 +69,7 @@ export const MobileIndex = () => {
       <img style={{height:"100%"}} src={Group} />
       </>
       :
-      progress.share?<><Share roomid={roominfo.id} roomname={roominfo.name}/> <img style={{height:"100%"}} src={Group} /></>
+      progress.share?<><Share next={getProgress} roomid={roominfo.id} roomname={roominfo.name}/> <img style={{height:"100%"}} src={Group} /></>
       :
       <>
       <Choicecard next={getProgress}/>

@@ -301,8 +301,12 @@ main.mobileindex_main section.share div.link button {
 main.mobileindex_main section.share div.link button i {
   font-size: clamp(16px, 5.9vw, 25px);
 }
-main.mobileindex_main section.share div.link button h5 {
+main.mobileindex_main section.share div.link button input {
   font-family: helvetica;
   letter-spacing: 2px;
   font-size: clamp(16px, 5.5vw, 25px);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
 }
