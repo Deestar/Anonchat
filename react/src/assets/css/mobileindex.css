@@ -244,7 +244,7 @@ main.mobileindex_main section.share div.buttons {
   justify-content: center;
   column-gap: 2%;
 }
-main.mobileindex_main section.share div.buttons button {
+main.mobileindex_main section.share div.buttons a {
   width: 46%;
   height: 100%;
   background-color: #202923;
@@ -254,11 +254,12 @@ main.mobileindex_main section.share div.buttons button {
   align-items: center;
   row-gap: 10%;
   border-radius: 15px;
-  border-color: rgba(255, 255, 255, 0.205);
+  border: 2px solid rgba(255, 255, 255, 0.205);
   border-right-color: transparent;
   border-bottom-color: transparent;
+  text-decoration: none;
 }
-main.mobileindex_main section.share div.buttons button i {
+main.mobileindex_main section.share div.buttons a i {
   font-size: clamp(32px, 8vw, 50px);
   /* background-color: rgb(203, 236, 213); */
   border-radius: 50%;
@@ -266,7 +267,7 @@ main.mobileindex_main section.share div.buttons button i {
   height: fit-content;
   padding: 4%;
 }
-main.mobileindex_main section.share div.buttons button h4 {
+main.mobileindex_main section.share div.buttons a h4 {
   color: rgb(185, 216, 193);
   font-size: clamp(16px, 5vw, 20px);
   font-family: helvetica;
