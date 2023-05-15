@@ -15,8 +15,8 @@ class RoomsController extends Controller
     {
         $validated = $request->validate(
             [
-                "name" => "bail|required|min:3|string",
-                "banned" => "bail|nullable|min:3|string",
+                "name" => "bail|required|min:3|string|max:20",
+                "banned" => "bail|nullable|min:3|string|max:20",
                 "logo" => 'bail|max:500|file|nullable|image',
             ]
         );
@@ -52,7 +52,7 @@ class RoomsController extends Controller
                 'room_id' => 'min:5|required|string',
             ]
         );
-        $id = base64_decode($request->id);
+        $id = base64_decode($request->room_id);
         $room = $rooms->all()->where("room_id", $id);
         if ($room->count() < 1) {
             return response()->json([

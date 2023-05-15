@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Fetcher } from "./fetcher";
+import { Loader } from "./Loader";
 import Back from "../../../assets/img/back.png";
 export const Createform = ({ prev, next }) => {
   //inputs state
@@ -8,6 +9,8 @@ export const Createform = ({ prev, next }) => {
     banned: null,
     logo: null,
   });
+  //State to show Loader
+  const [loader, setLoader] = useState(false);
   //error states
   const [error, setError] = useState({
     name: null,
@@ -41,6 +44,7 @@ export const Createform = ({ prev, next }) => {
   //when create button is clicked function onclick to create room
   const submitRoom = (event) => {
     event.preventDefault();
+    setLoader(true);
     const form = new FormData();
     form.append("name", newroom.name);
     form.append("banned", newroom.banned);
@@ -55,7 +59,9 @@ export const Createform = ({ prev, next }) => {
       } else {
         setError({ name: null, banned: null, logo: null });
         next(response.room_id, response.name);
+        console.log(response);
       }
+      setLoader(false);
     });
   };
 
@@ -76,7 +82,7 @@ export const Createform = ({ prev, next }) => {
             onBlur={stoptouch}
             name="name"
             type="text"
-            maxLength={25}
+            maxLength={20}
             onInput={getNewRoom}
           />
           {error.name ? <h6>{error.name}</h6> : null}
@@ -90,6 +96,7 @@ export const Createform = ({ prev, next }) => {
             name="banned"
             placeholder="bitch, hoe, racist"
             onInput={getNewRoom}
+            maxLength={20}
           />
           {error.banned ? <h6>{error.banned}</h6> : null}
         </label>
@@ -99,7 +106,7 @@ export const Createform = ({ prev, next }) => {
           {error.logo ? <h6>{error.logo}</h6> : null}
         </label>
       </section>
-      <button type="submit">Create</button>
+      {loader ? <Loader /> : <button type="submit">Create</button>}
     </form>
   );
 };

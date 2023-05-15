@@ -16,7 +16,7 @@ export const MobileIndex = () => {
     share: true,
   });
   //State to get the roomid and name for share component after user creates room
-  const [roominfo, setRoomInfo] = useState({ name: "", id: "" });
+  const [roominfo, setRoomInfo] = useState({ name: "", roomid: "" });
   //function to set room id and switch to share page
   const setShare = useCallback((id, name) => {
     setRoomInfo({ name: name, roomid: id });
@@ -69,7 +69,7 @@ export const MobileIndex = () => {
       <img style={{height:"100%"}} src={Group} />
       </>
       :
-      progress.share?<><Share next={getProgress} roomid={roominfo.id} roomname={roominfo.name}/> <img style={{height:"100%"}} src={Group} /></>
+      progress.share?<><Share next={getProgress} roomid={roominfo.roomid} roomname={roominfo.name}/> <img style={{height:"100%"}} src={Group} /></>
       :
       <>
       <Choicecard next={getProgress}/>

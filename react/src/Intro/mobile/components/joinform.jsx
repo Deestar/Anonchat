@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Back from "../../../assets/img/back.png";
 import { Fetcher } from "./fetcher";
+import { Loader } from "./Loader";
+import { Appcontext } from "../../../setappcontext";
 //Added inline styling to get a quick fit to one input
 export const Joinform = ({ prev }) => {
+  //Loader state
+  const [loader, setLoader] = useState(false);
   //State to get id
   const [id, setId] = useState("");
+  //style for h3 info
   const style = {
     fontSize: "clamp(16px, 5.7vw, 20px)",
     color: "rgb(209, 209, 209)",
@@ -12,6 +17,10 @@ export const Joinform = ({ prev }) => {
     marginBottom: "2%",
     fontFamily: "cursive",
   };
+  //State for error message
+  const [error, setError] = useState(null);
+  //getting the function to change to chatroom from context
+  const setchatroom = useContext(Appcontext);
   //change height to absolute value on focus of input
   const blurout = () => {
     let h = Math.max(
@@ -26,14 +35,21 @@ export const Joinform = ({ prev }) => {
     let r = document.querySelector(":root");
     r.style.setProperty("--height", "-webkit-fill-available");
   };
-  //function to join a room
+  //function to join a room with roomid
   const joinroom = (event) => {
     event.preventDefault();
+    setLoader(true);
     const form = new FormData();
     form.append("room_id", id);
     const send = Fetcher("http://127.0.0.1:8000/api/room", "post", form);
     send.then((response) => {
-      console.log(response);
+      if (response.error) {
+        setError(response.message ?? response.room_id);
+      } else {
+        setError(null);
+        setchatroom("chatroom", response);
+      }
+      setLoader(false);
     });
   };
   return (
@@ -72,11 +88,13 @@ export const Joinform = ({ prev }) => {
             placeholder="Roomid"
             style={{ paddingLeft: "15px", minHeight: "clamp(40px,5.5vh,50px)" }}
           />
-          {/* <h6>An error message for input values</h6> */}
+          {error ? (
+            <h6 style={{ textTransform: "capitalize" }}>{error}</h6>
+          ) : null}
         </label>
       </section>
       <h3 style={style}>Request for your Room Id from room owner</h3>
-      <button>Join Room</button>
+      {loader ? <Loader /> : <button>Join Room</button>}
     </form>
   );
 };

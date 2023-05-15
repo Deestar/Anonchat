@@ -7,15 +7,17 @@ export const App = () => {
     intro: true,
     chatroom: false,
   });
-  const setapptype = useCallback(
-    (type) =>
-      setGetAppType(() => ({
-        intro: false,
-        chatroom: false,
-        [type]: true,
-      })),
-    []
-  );
+  //state for the chatroom information
+  const [chatroom, setChatroom] = useState({});
+  //function to set intro or chatroom
+  const setapptype = useCallback((type, roominfo) => {
+    setChatroom(roominfo);
+    setGetAppType(() => ({
+      intro: false,
+      chatroom: false,
+      [type]: true,
+    }));
+  }, []);
   return (
     <Appcontext.Provider value={setapptype}>
       {getapptype.intro ? <Introscreen /> : <h2>Chat room is set</h2>}
