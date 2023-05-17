@@ -10,10 +10,10 @@ import { Share } from "./components/Share";
 export const MobileIndex = () => {
   //State to detemine what component to render next
   const [progress, setProgress] = useState({
-    choice: false,
+    choice: true,
     create: false,
     room: false,
-    share: true,
+    share: false,
   });
   //State to get the roomid and name for share component after user creates room
   const [roominfo, setRoomInfo] = useState({ name: "", roomid: "" });

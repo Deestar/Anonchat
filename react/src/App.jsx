@@ -1,11 +1,12 @@
 import { useCallback, useState } from "react";
 import { Introscreen } from "./Intro/mainscreen";
 import { Appcontext } from "./setappcontext";
+import { MainChatRoom } from "./chatroom/mainchatscreen";
 export const App = () => {
   //state for which view to be returned
   const [getapptype, setGetAppType] = useState({
-    intro: true,
-    chatroom: false,
+    intro: false,
+    chatroom: true,
   });
   //state for the chatroom information
   const [chatroom, setChatroom] = useState({});
@@ -20,7 +21,7 @@ export const App = () => {
   }, []);
   return (
     <Appcontext.Provider value={setapptype}>
-      {getapptype.intro ? <Introscreen /> : <h2>Chat room is set</h2>}
+      {getapptype.intro ? <Introscreen /> : <MainChatRoom room={chatroom} />}
     </Appcontext.Provider>
   );
 };

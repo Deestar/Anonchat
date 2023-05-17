@@ -53,8 +53,8 @@ class RoomsController extends Controller
             ]
         );
         $id = base64_decode($request->room_id);
-        $room = $rooms->all()->where("room_id", $id);
-        if ($room->count() < 1) {
+        $room = $rooms::where("room_id", $id)->first();
+        if (!$room) {
             return response()->json([
                 "error" => true,
                 "message" => "room does not exist",
