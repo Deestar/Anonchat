@@ -51,7 +51,8 @@ main.mobilechat footer form {
   /* border: var(--border1); */
   height: fit-content;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  column-gap: 6%;
   padding: 2% 2%;
   align-items: center;
   width: 100%;
@@ -91,4 +92,13 @@ main.mobilechat footer form button {
   background-color: transparent;
   border: none;
   align-self: flex-end;
+}
+main.mobilechat footer form > i {
+  font-size: clamp(20px, 6.3vw, 26px);
+  color: red;
+  align-self: center;
+}
+main.mobilechat footer form > h3 {
+  color: aliceblue;
+  font-size: clamp(17px, 5vw, 19px);
 }
