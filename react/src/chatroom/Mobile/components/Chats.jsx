@@ -1,22 +1,33 @@
-export const Chats = ({ ifreply, chat, reply, setreply }) => {
+import { useEffect, useRef } from "react";
+
+export const Chats = ({ ifreply, chat, reply, setreply, id, img }) => {
+  //reference to the chats body
+  const cont = useRef();
+  //Refrence to the distance for the icons
+  const w = useRef(null);
   //Function to get the chat and set reply true when icon clicked
   const getchat = ({ target }) => {
-    const chattext = target.parentElement.children[1].textContent;
+    //This gets the position of the main h3 as t depends on if parent has a reply element or not ~ -2 because its an array
+    let position = target.parentElement.children.length - 2;
+    const chattext = target.parentElement.children[position].textContent;
     setreply(chattext, true);
   };
   //prettier-ignore
-  return <div className="chats_body">
+  return <div ref={cont} id={id} className="chats_body">
     { ifreply?
     <div>
         <div></div>
         <h5>{reply}</h5>
-        </div>: null}
+        </div>:
+        null
+        }
     { chat?
           <h3>{chat}</h3>
          :
           <img src={"../../../assets/img/chatbackground.jpg"}/>}
-    { chat?
-    <i className="fa-solid fa-reply" onClick={getchat}></i>
+    {
+    chat?
+    <i  className="fa-solid fa-reply" onClick={getchat}></i>
     :
     null}
   </div>;

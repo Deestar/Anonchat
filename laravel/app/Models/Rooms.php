@@ -12,4 +12,8 @@ class Rooms extends Model
     protected $fillable = [
         "name", "banned", "logo", "room_id",
     ];
+    protected function chats()
+    {
+        return $this->hasMany(Chats::class, "room_id");
+    }
 }

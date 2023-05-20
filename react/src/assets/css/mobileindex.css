@@ -196,6 +196,7 @@ main.mobileindex_main form button {
   color: rgb(65, 64, 64);
   border: none;
   outline: none;
+  background-color: white;
 }
 @media (max-width: 280px) and (height: 653px) {
   main.mobileindex_main form h1 {

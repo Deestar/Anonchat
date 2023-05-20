@@ -68,9 +68,10 @@ class RoomsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function chats(Rooms $id)
     {
-        //
+        $chat = $id->chats;
+        return response()->json($id);
     }
 
     /**

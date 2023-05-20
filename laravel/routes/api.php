@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::post("/", [RoomsController::class, "index"]);
 Route::post("/room", [RoomsController::class, "show"]);
 Route::post("/chat", [ChatsController::class, "store"]);
+Route::get('/{id}', [RoomsController::class, 'chats']);

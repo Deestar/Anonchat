@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Fetcher } from "../../../Intro/mobile/components/fetcher";
-export const Footer = ({ reply, cancel, id }) => {
+export const Footer = ({ reply, cancel, id, refetch, popup }) => {
   const foot = useRef(null);
   const tarea = useRef(null);
   const fileInput = useRef(null);
@@ -74,8 +74,26 @@ export const Footer = ({ reply, cancel, id }) => {
     reply.reply ? form.append("reply", reply.replyto) : null;
     const send = Fetcher("http://127.0.0.1:8000/api/chat", "post", form);
     send.then((res) => {
-      console.log(res);
+      if (!res.error) {
+        setChat({ text: "" });
+        cancel(() => ({ reply: false, replyto: "" }));
+        setSend(false);
+        if (tarea.current) {
+          tarea.current.style.height = "5.2vh";
+          console.log("text");
+        } else {
+          setSend(false);
+          setTextSet(true);
+          fileInput.current.value = "";
+        }
+      } else {
+        popup(res.img[0]);
+        setTimeout(() => {
+          popup(null);
+        }, 2000);
+      }
     });
+    refetch();
   };
   //Function to remove selected reply
   const rmvReply = () => {
@@ -101,6 +119,7 @@ export const Footer = ({ reply, cancel, id }) => {
           }}
           onBlur={resheight}
           placeholder="Type here"
+          value={chat.text}
         >
         </textarea>
         :
