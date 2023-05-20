@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chats;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ChatsController extends Controller
 {
@@ -19,11 +21,26 @@ class ChatsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
+        $validated = $request->validate(
             [
-                'chats' => 'required',
+                'room_id' => 'required|numeric',
+                'chats' => 'string|nullable',
+                'ifreply' => 'boolean|required',
+                'reply' => 'string|nullable',
+                'img' => 'file|image|nullable',
             ]
         );
+        if ($request->hasFile("img")) {
+            $user_img = $request->file("img");
+            $new_name = time() . "_" . $user_img->getClientOriginalName();
+            $img = Image::make($request->file("img"));
+            $img->resize(300, 300);
+            $stored_path = $img->save("../../chatimg/" . $new_name)->basePath();
+            $validated['logo'] = $stored_path;
+        }
+        Chats::create($validated);
+        return response()->json("Chat succesfully sent");
+
     }
 
     /**

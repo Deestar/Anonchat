@@ -5,8 +5,8 @@ import { MainChatRoom } from "./chatroom/mainchatscreen";
 export const App = () => {
   //state for which view to be returned
   const [getapptype, setGetAppType] = useState({
-    intro: false,
-    chatroom: true,
+    intro: true,
+    chatroom: false,
   });
   //state for the chatroom information
   const [chatroom, setChatroom] = useState({});

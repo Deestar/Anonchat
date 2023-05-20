@@ -29,16 +29,7 @@ main.mobilechat header i {
   color: rgb(182, 65, 19);
   font-size: clamp(20px, 6.3vw, 26px);
 }
-main.mobilechat section.chatbody {
-  /* border: var(--border2); */
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  background-image: url("../../assets/img/chatbackground.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
 main.mobilechat footer {
   /* border: var(--border3); */
   position: fixed;
@@ -46,6 +37,8 @@ main.mobilechat footer {
   height: fit-content;
   width: 100%;
   background-color: rgb(31, 27, 26);
+  display: flex;
+  flex-direction: column;
 }
 main.mobilechat footer form {
   /* border: var(--border1); */
@@ -101,4 +94,95 @@ main.mobilechat footer form > i {
 main.mobilechat footer form > h3 {
   color: aliceblue;
   font-size: clamp(17px, 5vw, 19px);
+}
+main.mobilechat footer > div.replying {
+  /* border: var(--border1); */
+  display: grid;
+  grid-template-columns: 2% 91% 5%;
+}
+main.mobilechat footer > div.replying div {
+  background-color: rgb(235, 123, 179);
+}
+main.mobilechat footer > div.replying h5 {
+  color: white;
+  font-family: helvetica;
+  overflow: hidden;
+  height: clamp(16px, 5.4vw, 21px);
+  overflow: hidden;
+  text-overflow: clip;
+  padding: 0 1.5%;
+
+  text-overflow: ellipsis;
+  font-size: clamp(13px, 4.2vw, 17px);
+}
+main.mobilechat footer > div.replying i {
+  color: rgb(182, 65, 19);
+  font-size: clamp(18px, 5vw, 23px);
+  align-self: center;
+}
+main.mobilechat footer > div.replying h5 span {
+  color: rgb(243, 68, 77);
+}
+main.mobilechat section.chatbody {
+  /* border: var(--border2); */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-image: url("../../assets/img/chatbackground.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: flex-end;
+  padding-right: 4%;
+  padding-top: 4%;
+}
+main.mobilechat section.chatbody div.chats_body {
+  /* border: var(--border1); */
+  width: fit-content;
+  max-width: 80%;
+  overflow-wrap: break-word;
+  border-radius: 10px;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(26, 80, 161);
+  color: white;
+  font-family: helvetica;
+  height: fit-content;
+  row-gap: 1vh;
+  position: relative;
+}
+main.mobilechat section.chatbody div.chats_body h3 {
+  /* border: var(--border1); */
+  font-size: clamp(17px, 4.6vw, 19px);
+  font-weight: 200;
+}
+main.mobilechat section.chatbody div.chats_body img {
+  /* border: var(--border1); */
+  background-color: rgba(255, 255, 255, 0.596);
+  backdrop-filter: blur(10px);
+  max-height: 40vh;
+}
+main.mobilechat section.chatbody div.chats_body i {
+  position: absolute;
+  left: clamp(-25px, -13%, -10px);
+  top: 50%;
+  color: rgb(48, 130, 185);
+  font-size: clamp(18px, 5vw, 21px);
+}
+main.mobilechat section.chatbody div.chats_body > div {
+  display: flex;
+  background-color: rgb(8, 54, 105);
+  column-gap: 1.5%;
+}
+main.mobilechat section.chatbody div.chats_body > div > div {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 5%;
+  background-color: rgb(235, 123, 179);
+}
+main.mobilechat section.chatbody div.chats_body > div h5 {
+  padding: 2% 0;
+  font-size: clamp(14px, 4vw, 17px);
+  font-weight: 200;
 }

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-export const Footer = () => {
+import { Fetcher } from "../../../Intro/mobile/components/fetcher";
+export const Footer = ({ reply, cancel, id }) => {
   const foot = useRef(null);
   const tarea = useRef(null);
   const fileInput = useRef(null);
@@ -9,6 +10,10 @@ export const Footer = () => {
   const [send, setSend] = useState(false);
   //state to show textarea
   const [textset, setTextSet] = useState(true);
+  //Input states
+  const [chat, setChat] = useState({
+    text: "",
+  });
   //Function to blur textarea
   const blurInput = () => {
     if (tarea.current) {
@@ -27,7 +32,6 @@ export const Footer = () => {
   };
   //Function to set height back to responsive
   const resheight = () => {
-    console.log("blurred");
     let r = document.querySelector(":root");
     r.style.setProperty("--height", "-webkit-fill-available");
     document.removeEventListener("touchstart", blurInput);
@@ -39,7 +43,7 @@ export const Footer = () => {
     const textHeight = textarea.scrollHeight;
     textarea.style.height = textHeight + "px";
   };
-  //Function to set the send button when user chooses and remove the texarea from view
+  //Function to set the send button when user chooses an image and remove the texarea from view
   const setImage = (event) => {
     const { name, type } = event.target.files[0];
     if (event.target && type.startsWith("image/")) {
@@ -58,21 +62,42 @@ export const Footer = () => {
     setTextSet(true);
     fileInput.current.value = "";
   };
-  //Function to send inputs when user clicks send
+  //Function to send inputs when user clicks send button
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = new FormData();
+    textset
+      ? form.append("chats", chat)
+      : form.append("img", fileInput.current.files[0]);
+    form.append("ifreply", reply.reply ? 1 : 0);
+    form.append("room_id", id);
+    reply.reply ? form.append("reply", reply.replyto) : null;
+    const send = Fetcher("http://127.0.0.1:8000/api/chat", "post", form);
+    send.then((res) => {
+      console.log(res);
+    });
+  };
+  //Function to remove selected reply
+  const rmvReply = () => {
+    cancel(() => ({ reply: false, replyto: "" }));
   };
   // prettier-ignore
   return (
     <footer ref={foot} onSubmit={handleSubmit}>
+     {reply.reply?<div className="replying">
+        <div></div>
+        <h5><span>Replying to </span>{reply.replyto}</h5>
+        <i onClick={rmvReply} className="fa-solid fa-xmark"></i>
+      </div>:null}
       <form>
-    {textset?    <textarea
+    {textset?<textarea
         onKeyUp={(e)=>e.target.value.length > 0?setSend(true):setSend(false)}
           ref={tarea}
           onFocus={staticheight}
           onInput={(event)=>{
-            incrTextHeight(event)
-
+            incrTextHeight(event);
+            //manage text area input
+           setChat(event.target.value);
           }}
           onBlur={resheight}
           placeholder="Type here"
