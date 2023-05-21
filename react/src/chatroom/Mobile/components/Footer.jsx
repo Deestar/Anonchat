@@ -64,6 +64,7 @@ export const Footer = ({ reply, cancel, id, refetch, popup }) => {
   };
   //Function to send inputs when user clicks send button
   const handleSubmit = (e) => {
+    setSend(false);
     e.preventDefault();
     const form = new FormData();
     textset
@@ -73,27 +74,29 @@ export const Footer = ({ reply, cancel, id, refetch, popup }) => {
     form.append("room_id", id);
     reply.reply ? form.append("reply", reply.replyto) : null;
     const send = Fetcher("http://127.0.0.1:8000/api/chat", "post", form);
-    send.then((res) => {
-      if (!res.error) {
-        setChat({ text: "" });
-        cancel(() => ({ reply: false, replyto: "" }));
-        setSend(false);
-        if (tarea.current) {
-          tarea.current.style.height = "5.2vh";
-          console.log("text");
+    send
+      .then((res) => {
+        if (!res.error) {
+          setChat({ text: "" });
+          cancel(() => ({ reply: false, replyto: "" }));
+          if (tarea.current) {
+            tarea.current.style.height = "5.2vh";
+          } else {
+            setSend(false);
+            setTextSet(true);
+            fileInput.current.value = "";
+          }
         } else {
-          setSend(false);
-          setTextSet(true);
-          fileInput.current.value = "";
+          setSend(true);
+          popup(res.img[0]);
+          setTimeout(() => {
+            popup(null);
+          }, 2000);
         }
-      } else {
-        popup(res.img[0]);
-        setTimeout(() => {
-          popup(null);
-        }, 2000);
-      }
-    });
-    refetch();
+      })
+      .then(() => {
+        refetch();
+      });
   };
   //Function to remove selected reply
   const rmvReply = () => {

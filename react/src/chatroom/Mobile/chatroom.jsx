@@ -26,7 +26,7 @@ export const MobileChatroom = ({ room }) => {
   return (
     <main className="mobilechat">
       {popup ? <h4 className="popup">{popup}</h4> : null}
-      <Header name={room.name} />
+      <Header img={room.logo} name={room.name} />
       <Chatbody f={refetch} id={room.id} setreply={getReply} />
       <Footer
         popup={getPopup}

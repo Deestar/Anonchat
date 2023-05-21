@@ -16,8 +16,8 @@ main.mobilechat header {
   padding: 0 3%;
 }
 main.mobilechat header img {
-  height: clamp(35px, 80%, 60px);
-  max-width: 100px;
+  height: clamp(35px, 80%, 50px);
+  max-width: 50px;
   border-radius: 50%;
 }
 main.mobilechat header h2 {
@@ -161,10 +161,10 @@ main.mobilechat section.chatbody div.chats_body h3 {
   font-weight: 200;
 }
 main.mobilechat section.chatbody div.chats_body img {
-  /* border: var(--border1); */
   background-color: rgba(255, 255, 255, 0.596);
   backdrop-filter: blur(10px);
-  max-height: 40vh;
+  max-height: 50vh;
+  max-width: 80vw;
 }
 main.mobilechat section.chatbody div.chats_body i {
   position: absolute;

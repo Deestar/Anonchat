@@ -24,7 +24,7 @@ export const Chats = ({ ifreply, chat, reply, setreply, id, img }) => {
     { chat?
           <h3>{chat}</h3>
          :
-          <img src={"../../../assets/img/chatbackground.jpg"}/>}
+          <img src={img}/>}
     {
     chat?
     <i  className="fa-solid fa-reply" onClick={getchat}></i>

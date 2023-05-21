@@ -35,11 +35,11 @@ class ChatsController extends Controller
             $new_name = time() . "_" . $user_img->getClientOriginalName();
             $img = Image::make($request->file("img"));
             $img->resize(300, 300);
-            $stored_path = $img->save("../../chatimg/" . $new_name)->basePath();
-            $validated['logo'] = $stored_path;
+            $stored_path = $img->save("../../chatimg/" . $new_name, null, 'jpg')->basePath();
+            $validated['img'] = $stored_path;
         }
         Chats::create($validated);
-        return response()->json("Chat succesfully sent");
+        return response()->json('Successful');
 
     }
 
