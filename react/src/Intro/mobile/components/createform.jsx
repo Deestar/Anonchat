@@ -51,7 +51,11 @@ export const Createform = ({ prev, next }) => {
     if (logo.current.files.length > 0) {
       form.append("logo", logo.current.files[0]);
     }
-    const send = Fetcher("http://127.0.0.1:8000/api/", "post", form);
+    const send = Fetcher(
+      "http://funanonchat.rf.gd/laravel/public/api",
+      "post",
+      form
+    );
     send.then((response) => {
       if (response.error) {
         console.log(response);

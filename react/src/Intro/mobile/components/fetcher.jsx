@@ -8,7 +8,7 @@ export const Fetcher = (url = "", method, params = {}, token) => {
         Accept: "application/json",
       },
     });
-    const response = await send.json();
+    const response = await send.text();
     if (response.errors) {
       return {
         ...response.errors,

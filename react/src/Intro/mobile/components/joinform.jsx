@@ -41,7 +41,11 @@ export const Joinform = ({ prev }) => {
     setLoader(true);
     const form = new FormData();
     form.append("room_id", id);
-    const send = Fetcher("http://127.0.0.1:8000/api/room", "post", form);
+    const send = Fetcher(
+      "http://funanonchat.rf.gd/laravel/public/api/room",
+      "post",
+      form
+    );
     send.then((response) => {
       if (response.error) {
         setError(response.message ?? response.room_id);
