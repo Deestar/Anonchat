@@ -73,7 +73,13 @@ export const Footer = ({ reply, cancel, id, refetch, popup }) => {
     form.append("ifreply", reply.reply ? 1 : 0);
     form.append("room_id", id);
     reply.reply ? form.append("reply", reply.replyto) : null;
-    const send = Fetcher("http://127.0.0.1:8000/api/chat", "post", form);
+    //use this for production
+    //http://funanonchat.atwebpages.com/laravel/public
+    const send = Fetcher(
+      "http://localhost/projects/anonchat/laravel/public/api/chat",
+      "post",
+      form
+    );
     send
       .then((res) => {
         if (!res.error) {

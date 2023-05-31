@@ -10,7 +10,13 @@ export const Chatbody = ({ setreply, id, f }) => {
   //Function to get chats for rooms
   useEffect(() => {
     setLoader(true);
-    const send = Fetcher(`http://127.0.0.1:8000/api/${id}`, "get", null);
+    //use this for production
+    // http://funanonchat.atwebpages.com/laravel/public
+    const send = Fetcher(
+      `http://localhost/projects/anonchat/laravel/public/api/${id}`,
+      "get",
+      null
+    );
     send.then((res) => {
       if (res.error) {
         //There is an error

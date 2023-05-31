@@ -51,19 +51,19 @@ export const Createform = ({ prev, next }) => {
     if (logo.current.files.length > 0) {
       form.append("logo", logo.current.files[0]);
     }
+    //use this link for production
+    // http://funanonchat.atwebpages.com/laravel/public/api
     const send = Fetcher(
-      "http://funanonchat.rf.gd/laravel/public/api",
+      "http://localhost/projects/anonchat/laravel/public/api",
       "post",
       form
     );
     send.then((response) => {
       if (response.error) {
-        console.log(response);
         setError(response);
       } else {
         setError({ name: null, banned: null, logo: null });
         next(response.room_id, response.name);
-        console.log(response);
       }
       setLoader(false);
     });

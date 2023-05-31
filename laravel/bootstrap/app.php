@@ -40,7 +40,7 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-// header('Access-Control-Allow-Origin:*');
+// header('Access-Control-Allow-Origin:http://localhost:5173');
 // header('Access-Control-Allow-Headers:*');
 /*
 |--------------------------------------------------------------------------

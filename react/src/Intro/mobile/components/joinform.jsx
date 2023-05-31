@@ -41,8 +41,10 @@ export const Joinform = ({ prev }) => {
     setLoader(true);
     const form = new FormData();
     form.append("room_id", id);
+    //use this for production
+    // http://funanonchat.atwebpages.com/laravel/public
     const send = Fetcher(
-      "http://funanonchat.rf.gd/laravel/public/api/room",
+      "http://localhost/projects/anonchat/laravel/public/api/room",
       "post",
       form
     );
