@@ -168,7 +168,7 @@ main.mobilechat section.chatbody div.chats_body img {
 }
 main.mobilechat section.chatbody div.chats_body i {
   position: absolute;
-  right: clamp(50px, 104%, 200px);
+  right: clamp(46px, 104%, 500px);
   top: 25%;
   color: rgb(48, 130, 185);
   font-size: clamp(18px, 5vw, 21px);
