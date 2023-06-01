@@ -168,7 +168,7 @@ main.mobilechat section.chatbody div.chats_body img {
 }
 main.mobilechat section.chatbody div.chats_body i {
   position: absolute;
-  right: clamp(46px, 104%, 500px);
+  right: clamp(52px, 104%, 500px);
   top: 25%;
   color: rgb(48, 130, 185);
   font-size: clamp(18px, 5vw, 21px);
@@ -220,8 +220,7 @@ main.mobilechat > div.clicked_img {
   display: grid;
   align-items: center;
 }
-main.mobilechat > div.clicked_img > i {
-  color: white;
+main.mobilechat > div.clicked_img > header {
   position: absolute;
   top: 0;
   /* border: var(--border2); */
@@ -230,8 +229,11 @@ main.mobilechat > div.clicked_img > i {
   display: flex;
   align-items: center;
   padding-left: 2%;
-  font-size: clamp(20px, 6vw, 28px);
   background-color: rgb(73, 45, 24);
+}
+main.mobilechat > div.clicked_img > header > i {
+  color: white;
+  font-size: clamp(20px, 6vw, 28px);
 }
 main.mobilechat > div.clicked_img > img {
   /* border: var(--border1); */

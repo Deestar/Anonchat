@@ -39,10 +39,12 @@ export const MobileChatroom = ({ room }) => {
     <main className="mobilechat">
       {img ? (
         <div className="clicked_img">
-          <i
-            onClick={() => setImg(null)}
-            className="fa-solid fa-arrow-left-long"
-          ></i>
+          <header>
+            <i
+              onClick={() => setImg(null)}
+              className="fa-solid fa-arrow-left-long"
+            ></i>
+          </header>
           <img className="clicked_img" src={img} />
         </div>
       ) : null}
