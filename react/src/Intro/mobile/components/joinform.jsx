@@ -44,7 +44,7 @@ export const Joinform = ({ prev }) => {
     //use this for production
     // http://funanonchat.atwebpages.com/laravel/public
     const send = Fetcher(
-      "http://localhost/projects/anonchat/laravel/public/api/room",
+      "http://funanonchat.atwebpages.com/laravel/public/api/room",
       "post",
       form
     );

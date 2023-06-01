@@ -42,7 +42,7 @@ export const Share = ({ roomid, roomname, next }) => {
       <div className="buttons">
         {/* Replace dummy url with url of page */}
         <a
-          href={`whatsapp://send?text=Join A room name ${roomname} Anonymous Chatroom https://dummychatroom.com, with this id ${roomid}Test1212==`}
+          href={`whatsapp://send?text=Join A room name ${roomname} Anonymous Chatroom http://funanonchat.atwebpages.com, with this id ${roomid}Test1212==`}
         >
           <i className="fa-brands fa-whatsapp" style={{ color: "#256e3e" }}></i>
           <h4>Whatsapp</h4>
@@ -50,7 +50,7 @@ export const Share = ({ roomid, roomname, next }) => {
         {/* Replace this dummyurl with url of this page */}
         <a
           href={`https://t.me/share/url?url=${encodeURI(
-            "https://dummyurl.com"
+            "http://funanonchat.atwebpages.com"
           )}&text=${encodeURI(
             "Join " +
               roomname +

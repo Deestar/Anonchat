@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Fetcher } from "../../../Intro/mobile/components/fetcher";
-export const Footer = ({ reply, cancel, id, refetch, popup }) => {
+export const Footer = ({ reply, cancel, id, refetch, popup, lstate }) => {
   const foot = useRef(null);
   const tarea = useRef(null);
   const fileInput = useRef(null);
@@ -65,6 +65,7 @@ export const Footer = ({ reply, cancel, id, refetch, popup }) => {
   //Function to send inputs when user clicks send button
   const handleSubmit = (e) => {
     setSend(false);
+    lstate(true);
     e.preventDefault();
     const form = new FormData();
     textset
@@ -76,7 +77,7 @@ export const Footer = ({ reply, cancel, id, refetch, popup }) => {
     //use this for production
     //http://funanonchat.atwebpages.com/laravel/public
     const send = Fetcher(
-      "http://localhost/projects/anonchat/laravel/public/api/chat",
+      "http://funanonchat.atwebpages.com/laravel/public/api/chat",
       "post",
       form
     );
@@ -102,6 +103,7 @@ export const Footer = ({ reply, cancel, id, refetch, popup }) => {
       })
       .then(() => {
         refetch();
+        lstate(false);
       });
   };
   //Function to remove selected reply

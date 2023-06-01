@@ -2,18 +2,19 @@ import { Chats } from "./Chats";
 import { Fetcher } from "../../../Intro/mobile/components/fetcher";
 import { LoadChat } from "./ChatLoader";
 import { useEffect, useState } from "react";
-export const Chatbody = ({ setreply, id, f }) => {
+export const Chatbody = ({ setreply, id, f, cloader, lstate }) => {
   //State to collect chats
   const [chat, setChat] = useState([]);
-  //State for the Chatloader
-  const [loader, setLoader] = useState(false);
+  //state to show loader from this component only on first render
+  const [frender, setFrender] = useState(true);
   //Function to get chats for rooms
   useEffect(() => {
-    setLoader(true);
+    frender ? lstate(true) : null;
+    setFrender(false);
     //use this for production
     // http://funanonchat.atwebpages.com/laravel/public
     const send = Fetcher(
-      `http://localhost/projects/anonchat/laravel/public/api/${id}`,
+      `http://funanonchat.atwebpages.com/laravel/public/api/${id}`,
       "get",
       null
     );
@@ -24,7 +25,7 @@ export const Chatbody = ({ setreply, id, f }) => {
       if (res.chats ?? []) {
         setChat(res.chats);
       }
-      setLoader(false);
+      lstate(false);
     });
   }, [f]);
   // Mapping the chats to return an array of chat jsx
@@ -43,9 +44,9 @@ export const Chatbody = ({ setreply, id, f }) => {
   return (
     <section
       className="chatbody"
-      style={{ justifyContent: loader ? "center" : "flex-start" }}
+      style={{ justifyContent: cloader ? "center" : "flex-start" }}
     >
-      {loader ? <LoadChat /> : Allchat}
+      {cloader ? <LoadChat /> : Allchat}
     </section>
   );
 };

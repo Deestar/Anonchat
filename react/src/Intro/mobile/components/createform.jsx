@@ -54,7 +54,7 @@ export const Createform = ({ prev, next }) => {
     //use this link for production
     // http://funanonchat.atwebpages.com/laravel/public/api
     const send = Fetcher(
-      "http://localhost/projects/anonchat/laravel/public/api",
+      "http://funanonchat.atwebpages.com/laravel/public/api",
       "post",
       form
     );
