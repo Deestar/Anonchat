@@ -4,6 +4,8 @@ import { Footer } from "./components/Footer";
 import "../../assets/css/mobilechat.css";
 import { useCallback, useState } from "react";
 export const MobileChatroom = ({ room }) => {
+  //state for clicked images
+  const [img, setImg] = useState(null);
   //State for error popup occurs
   const [popup, setPopup] = useState(null);
   //state for chat loader
@@ -29,8 +31,21 @@ export const MobileChatroom = ({ room }) => {
   const setCLoader = useCallback((bool) => {
     setChatLoader(bool);
   }, []);
+  //Function to get clicked image from the chatbody component
+  const getClickedImage = useCallback((src) => {
+    setImg(src);
+  }, []);
   return (
     <main className="mobilechat">
+      {img ? (
+        <div className="clicked_img">
+          <i
+            onClick={() => setImg(null)}
+            className="fa-solid fa-arrow-left-long"
+          ></i>
+          <img className="clicked_img" src={img} />
+        </div>
+      ) : null}
       {popup ? <h4 className="popup">{popup}</h4> : null}
       <Header img={room.logo} name={room.name} />
       <Chatbody
@@ -39,6 +54,7 @@ export const MobileChatroom = ({ room }) => {
         setreply={getReply}
         cloader={chatLoader}
         lstate={setCLoader}
+        setimage={getClickedImage}
       />
       <Footer
         popup={getPopup}

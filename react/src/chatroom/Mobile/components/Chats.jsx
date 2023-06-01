@@ -1,6 +1,14 @@
 import { useEffect, useRef } from "react";
-
-export const Chats = ({ ifreply, chat, reply, setreply, id, img }) => {
+import IMG from "../../../assets/img/anon.png";
+export const Chats = ({
+  ifreply,
+  chat,
+  reply,
+  setreply,
+  id,
+  img,
+  setimage,
+}) => {
   //reference to the chats body
   const cont = useRef();
   //Refrence to the distance for the icons
@@ -11,6 +19,10 @@ export const Chats = ({ ifreply, chat, reply, setreply, id, img }) => {
     let position = target.parentElement.children.length - 2;
     const chattext = target.parentElement.children[position].textContent;
     setreply(chattext, true);
+  };
+  const getImage = (event) => {
+    const { target } = event;
+    setimage(target.getAttribute("src"));
   };
   //prettier-ignore
   return <div ref={cont} id={id} className="chats_body">
@@ -24,7 +36,7 @@ export const Chats = ({ ifreply, chat, reply, setreply, id, img }) => {
     { chat?
           <h3>{chat}</h3>
          :
-          <img src={img}/>}
+          <img onClick={getImage} src={IMG}/>}
     {
     chat?
     <i  className="fa-solid fa-reply" onClick={getchat}></i>

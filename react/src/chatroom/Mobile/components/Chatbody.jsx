@@ -2,7 +2,7 @@ import { Chats } from "./Chats";
 import { Fetcher } from "../../../Intro/mobile/components/fetcher";
 import { LoadChat } from "./ChatLoader";
 import { useEffect, useState } from "react";
-export const Chatbody = ({ setreply, id, f, cloader, lstate }) => {
+export const Chatbody = ({ setreply, id, f, cloader, lstate, setimage }) => {
   //State to collect chats
   const [chat, setChat] = useState([]);
   //state to show loader from this component only on first render
@@ -38,6 +38,7 @@ export const Chatbody = ({ setreply, id, f, cloader, lstate }) => {
       img={img}
       reply={reply}
       setreply={setreply}
+      setimage={setimage}
     />
   ));
 
