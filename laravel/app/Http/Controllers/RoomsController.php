@@ -17,7 +17,7 @@ class RoomsController extends Controller
             [
                 "name" => "bail|required|min:3|string|max:20",
                 "banned" => "bail|nullable|min:3|string|max:20",
-                "logo" => 'bail|max:2000|file|nullable|image',
+                "logo" => 'bail|max:3000|file|nullable|image',
             ]
         );
         if ($request->hasFile("logo")) {

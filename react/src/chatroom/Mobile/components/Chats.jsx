@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import IMG from "../../../assets/img/anon.png";
 export const Chats = ({
   ifreply,
   chat,
@@ -21,8 +20,12 @@ export const Chats = ({
     setreply(chattext, true);
   };
   const getImage = (event) => {
+    event.preventDefault();
     const { target } = event;
-    setimage(target.getAttribute("src"));
+    console.log(target.getAttribute("src"));
+    if (target.getAttribute("src") ?? null) {
+      setimage(target.getAttribute("src"));
+    }
   };
   //prettier-ignore
   return <div ref={cont} id={id} className="chats_body">
@@ -36,7 +39,7 @@ export const Chats = ({
     { chat?
           <h3>{chat}</h3>
          :
-          <img onClick={getImage} src={IMG}/>}
+          <img onClick={getImage} src={img}/>}
     {
     chat?
     <i  className="fa-solid fa-reply" onClick={getchat}></i>

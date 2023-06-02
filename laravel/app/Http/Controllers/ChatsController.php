@@ -27,7 +27,7 @@ class ChatsController extends Controller
                 'chats' => 'string|nullable',
                 'ifreply' => 'boolean|required',
                 'reply' => 'string|nullable',
-                'img' => 'file|image|nullable|max:3500',
+                'img' => 'file|image|nullable|max:5000',
             ]
         );
         if ($request->hasFile("img")) {
