@@ -1,5 +1,5 @@
 main.mobilechat {
-  /* border: var(--border1); */
+  /* border: var(--border3); */
   height: var(--height);
   display: grid;
   width: 100%;
@@ -46,7 +46,7 @@ main.mobilechat footer form {
   height: fit-content;
   display: flex;
   justify-content: flex-start;
-  column-gap: 6%;
+  column-gap: clamp(6px, 6%, 40px);
   padding: 2% 2%;
   align-items: center;
   width: 100%;
@@ -54,6 +54,7 @@ main.mobilechat footer form {
 main.mobilechat footer form > textarea {
   border-radius: 10px;
   height: 5.2vh;
+  min-height: 35px;
   width: 80%;
   outline: none;
   font-size: clamp(16px, 5vw, 24px);
@@ -138,7 +139,7 @@ main.mobilechat section.chatbody {
   padding-right: 4%;
   padding-top: 4%;
   row-gap: clamp(7px, 5%, 20px);
-  padding-bottom: 2%;
+  padding-bottom: clamp(5px, 6%, 15px);
   scroll-behavior: smooth;
 }
 main.mobilechat section.chatbody div.chats_body {

@@ -16,12 +16,13 @@ export const Footer = ({ reply, cancel, id, refetch, popup, lstate }) => {
   });
   //commented this out because for sime reaon touchscreen clicks image therefore triggering it
 
-  //Function to blur textarea
-  // const blurInput = useCallback((event) => {
-  //   if (tarea.current) {
-  //     tarea.current.blur();
-  //   }
-  // }, []);
+  // Function to blur textarea
+  const blurInput = useCallback((event) => {
+    event.stopPropagation();
+    if (tarea.current) {
+      tarea.current.blur();
+    }
+  }, []);
   //Function to blur textarea and maintain a height in 'px'
   const staticheight = useCallback((event) => {
     let h = Math.max(
@@ -29,14 +30,21 @@ export const Footer = ({ reply, cancel, id, refetch, popup, lstate }) => {
       window.innerHeight || 0
     );
     let r = document.querySelector(":root");
-    r.style.setProperty("--height", h + "px");
-    // document.body.addEventListener("touchstart", blurInput);
+    r.style.setProperty("--height", "-webkit-fill-available");
+    document
+      .querySelector("main.mobilechat")
+      .addEventListener("touchstart", blurInput);
+    foot.current.addEventListener("touchstart", (event) => {
+      event.stopPropagation();
+    });
   }, []);
   //Function to set height back to responsive
   const resheight = () => {
     let r = document.querySelector(":root");
     r.style.setProperty("--height", "-webkit-fill-available");
-    // document.body.removeEventListener("touchstart", blurInput);
+    document
+      .querySelector("main.mobilechat section.chatbody")
+      .removeEventListener("touchstart", blurInput);
   };
   //Function increase height based on text height
   const incrTextHeight = (e) => {

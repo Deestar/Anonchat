@@ -22,7 +22,6 @@ export const Chats = ({
   const getImage = (event) => {
     event.preventDefault();
     const { target } = event;
-    console.log(target.getAttribute("src"));
     if (target.getAttribute("src") ?? null) {
       setimage(target.getAttribute("src"));
     }

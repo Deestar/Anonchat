@@ -15,6 +15,7 @@ body,
 #root {
   height: var(--height);
   overflow: hidden;
+  /* border:var(--border1); */
 }
 main.mobileindex_main {
   height: var(--height);
@@ -24,6 +25,7 @@ main.mobileindex_main {
   row-gap: 2%;
   width: 100vw;
   overflow: hidden;
+  /* border:var(--border2); */
 }
 main.mobileindex_main header {
   /* border: var(--border2); */
@@ -67,14 +69,15 @@ section.choice {
   /* border: var(--border1); */
   display: flex;
   flex-direction: column;
-  row-gap: 4%;
+  row-gap: clamp(5px, 4%, 30px);
   padding: 0 2%;
   align-items: center;
   justify-content: center;
 }
 section.choice div.cards {
   background-color: rgb(61, 41, 41);
-  height: 48%;
+  /* height: clamp(130px, 48%, 200px); */
+  /* min-height: 130px; */
   width: 100%;
   display: flex;
 }
@@ -84,7 +87,7 @@ section.choice div.cards div.info {
   flex-direction: column;
   padding: 2% 5%;
   width: 90%;
-  row-gap: 8%;
+  row-gap: clamp(6px, 1.5vh, 20px);
 }
 section.choice div.cards div.info img {
   height: clamp(30px, 5vh, 60px);
