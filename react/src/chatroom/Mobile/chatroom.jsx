@@ -29,6 +29,7 @@ export const MobileChatroom = ({ room }) => {
   }, []);
   //function to set chatLoader
   const setCLoader = useCallback((bool) => {
+    console.log(bool);
     setChatLoader(bool);
   }, []);
   //Function to get clicked image from the chatbody component

@@ -134,10 +134,12 @@ main.mobilechat section.chatbody {
   background-position: center;
   background-repeat: no-repeat;
   align-items: flex-end;
+  justify-content: space-between;
   padding-right: 4%;
   padding-top: 4%;
-  row-gap: 3%;
+  row-gap: clamp(7px, 5%, 20px);
   padding-bottom: 2%;
+  scroll-behavior: smooth;
 }
 main.mobilechat section.chatbody div.chats_body {
   /* border: var(--border1); */

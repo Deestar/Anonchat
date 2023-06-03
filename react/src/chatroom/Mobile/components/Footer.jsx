@@ -105,7 +105,6 @@ export const Footer = ({ reply, cancel, id, refetch, popup, lstate }) => {
       })
       .then(() => {
         refetch();
-        lstate(false);
       });
   };
   //Function to remove selected reply
